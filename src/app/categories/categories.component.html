@@ -1,0 +1,29 @@
+<app-add-edit-category #modal></app-add-edit-category>
+<app-base-catalog
+  title="Categorías"
+  (onAdd)="modal.show = true"
+  [allowEditDelete]="!!category"
+  (onUpdate)="update()"
+  (onDelete)="delete()"
+>
+  @let state = categories$ | async; @if (state) {
+  <app-base-table
+    [values]="state.categories"
+    [isLoading]="state.isLoading"
+    [columns]="columns"
+    [rows]="rows"
+    [(selectedItem)]="category"
+  >
+    <ng-template #columns>
+      <th style="width: 2rem">Identificador</th>
+      <th>Nombre</th>
+      <th>Descripción</th>
+    </ng-template>
+    <ng-template #rows let-item="product">
+      <td>{{ item.id }}</td>
+      <td>{{ item.name }}</td>
+      <td>{{ item.description }}</td>
+    </ng-template>
+  </app-base-table>
+  }
+</app-base-catalog>

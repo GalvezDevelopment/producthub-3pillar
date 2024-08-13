@@ -1,0 +1,45 @@
+<app-base-modal
+  [title]="title"
+  [show]="show"
+  [disableAccept]="form.invalid"
+  (onAccept)="save()"
+  (onCancel)="close()"
+  [size]="{width: '25rem'}"
+>
+  <form [formGroup]="form">
+    <div class="grid horizontal-form">
+      <div class="col-12 field">
+        <label for="firstName">Nombre(s)</label>
+        <input
+          id="firstName"
+          type="text"
+          pInputText
+          formControlName="firstName"
+        />
+      </div>
+      <div class="col-12 field">
+        <label for="lastName">Apellidos</label>
+        <input
+          id="lastName"
+          type="text"
+          pInputText
+          formControlName="lastName"
+        />
+      </div>
+      <div class="col-12 field">
+        <label for="email">Correo electronico</label>
+        <input id="email" type="email" pInputText formControlName="email" />
+      </div>
+      <div class="col-12 field">
+        <label for="password">Contraseña</label>
+        <input
+          id="password"
+          type="password"
+          pInputText
+          formControlName="password"
+          autocomplete
+        />
+      </div>
+    </div>
+  </form>
+</app-base-modal>

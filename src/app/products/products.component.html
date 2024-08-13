@@ -1,0 +1,31 @@
+<app-add-edit-product #modal></app-add-edit-product>
+<app-base-catalog
+  title="Productos"
+  (onAdd)="modal.show = true"
+  [allowEditDelete]="!!product"
+  (onUpdate)="update()"
+  (onDelete)="delete()"
+>
+  @let state = products$ | async; @if (state) {
+  <app-base-table
+    [values]="state.products"
+    [isLoading]="state.isLoading"
+    [columns]="columns"
+    [rows]="rows"
+    [(selectedItem)]="product"
+  >
+    <ng-template #columns>
+      <th style="width: 20rem">Nombre</th>
+      <th>Descripción</th>
+      <th style="width: 10rem">Precio</th>
+      <th style="width: 10rem">Categoría</th>
+    </ng-template>
+    <ng-template #rows let-product="product">
+      <td>{{ product.title }}</td>
+      <td>{{ product.description }}</td>
+      <td>{{ product.price | currency }}</td>
+      <td>{{ product.category?.name }}</td>
+    </ng-template>
+  </app-base-table>
+  }
+</app-base-catalog>

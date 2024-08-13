@@ -1,0 +1,15 @@
+@let defaultSize = size || {width: '35rem'};
+@let cancelText = actions()[0];
+@let acceptText = actions()[1];
+<p-dialog [header]="title" [modal]="true" [(visible)]="show" [style]="defaultSize">
+    <div class="grid">
+        <div class="col-12">
+            <ng-content></ng-content>
+        </div>
+        <div class="col-12 flex justify-content-between">
+            <p-button [label]="cancelText" [text]="true" (onClick)="close()" [outlined]="true" severity="secondary"></p-button>
+            <p-button [label]="acceptText" (onClick)="accept($event)" [disabled]="disableAccept"></p-button>
+        </div>
+    </div>
+</p-dialog>
+<p-confirmDialog></p-confirmDialog>

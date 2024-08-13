@@ -1,0 +1,29 @@
+<app-add-edit-user #modal></app-add-edit-user>
+<app-base-catalog
+  title="Usuarios"
+  (onAdd)="modal.show = true"
+  [allowEditDelete]="!!user"
+  (onDelete)="delete()"
+  (onUpdate)="update()"
+>
+  @let state = users$ | async; @if (state) {
+  <app-base-table
+    [values]="state.users"
+    [isLoading]="state.isLoading"
+    [columns]="columns"
+    [rows]="rows"
+    [(selectedItem)]="user"
+  >
+    <ng-template #columns>
+      <th>Nombre(s)</th>
+      <th>Apellidos</th>
+      <th>Registro</th>
+    </ng-template>
+    <ng-template #rows let-item="product">
+      <td>{{ item.firstName }}</td>
+      <td>{{ item.lastName }}</td>
+      <td>{{ item.registeredOn | date : "dd-MM-YYYY" }}</td>
+    </ng-template>
+  </app-base-table>
+  }
+</app-base-catalog>

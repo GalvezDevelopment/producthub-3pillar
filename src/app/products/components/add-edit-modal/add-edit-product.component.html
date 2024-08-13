@@ -1,0 +1,58 @@
+<app-base-modal
+  [title]="title"
+  [show]="show"
+  [disableAccept]="form.invalid"
+  (onAccept)="save()"
+  (onCancel)="close()"
+  [size]="{ width: '35rem' }"
+>
+  <form [formGroup]="form">
+    <div class="grid horizontal-form">
+      <div class="col-12 field">
+        <label for="title">Nombre</label>
+        <input id="title" type="text" pInputText formControlName="title" />
+      </div>
+      <div class="col-12 field">
+        <label for="description">Descripción</label>
+        <input
+          id="description"
+          type="text"
+          pInputText
+          formControlName="description"
+        />
+      </div>
+      <div class="col-12 field">
+        <div class="grid">
+          <div class="col-6 field">
+            <label for="category">Categoría</label>
+            <div formGroupName="category">
+              <p-dropdown
+                id="category"
+                [options]="(categories$ | async) || []"
+                formControlName="id"
+                optionLabel="name"
+                optionValue="id"
+                placeholder="Seleccionar"
+              ></p-dropdown>
+            </div>
+          </div>
+          <div class="col-6 field">
+            <label for="price">Precio</label>
+            <div>
+              <p-inputNumber
+                id="price"
+                mode="decimal"
+                minFractionDigits="2"
+                maxFractionDigits="2"
+                formControlName="price"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <em>* Todos los campos son <strong>requeridos</strong>.</em>
+      </div>
+    </div>
+  </form>
+</app-base-modal>

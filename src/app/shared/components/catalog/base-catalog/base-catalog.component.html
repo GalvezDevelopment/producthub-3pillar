@@ -1,0 +1,31 @@
+<div class="grid">
+  <div class="col-8">
+    <h2>{{ catalogName() }}</h2>
+  </div>
+  <div class="col-4 flex justify-content-end align-items-center">
+    @if (allowEditDelete()) {
+    <p-button
+      label="Modificar"
+      (onClick)="onUpdate.emit()"
+      severity="warning"
+      size="small"
+    ></p-button>
+    <p-button
+      label="Borrar"
+      (onClick)="onDelete.emit()"
+      severity="danger"
+      size="small"
+    ></p-button>
+    } @else {
+    <p-button
+      label="Agregar"
+      (onClick)="onAdd.emit()"
+      severity="success"
+      size="small"
+    ></p-button>
+    }
+  </div>
+  <div class="col-12">
+    <ng-content></ng-content>
+  </div>
+</div>

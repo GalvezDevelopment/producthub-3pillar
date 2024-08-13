@@ -1,0 +1,45 @@
+@let isLoading = isLoading$ | async;
+<div class="grid nested-grid flex justify-content-center">
+  <div class="col-12 sm:col-8 md:col-6 lg:col-3">
+    <div class="grid">
+      <div class="col-12">
+        <h2>Iniciar sesión</h2>
+      </div>
+      <div class="col-12">
+        <div class="field">
+          <label for="email">Correo eléctronico</label>
+          <input
+            id="email"
+            type="email"
+            pInputText
+            required
+            maxlength="50"
+            [(ngModel)]="credentials.email"
+            autocomplete="email"
+            [disabled]="!!isLoading"
+          />
+        </div>
+        <div class="field">
+          <label for="password">Contraseña</label>
+          <input
+            id="password"
+            type="password"
+            pInputText
+            required
+            maxlength="16"
+            [(ngModel)]="credentials.password"
+            [disabled]="!!isLoading"
+          />
+        </div>
+      </div>
+      <div class="col-12 flex">
+        <p-button
+          label="Iniciar sesión"
+          severity="success"
+          [loading]="isLoading"
+          (onClick)="login()"
+        ></p-button>
+      </div>
+    </div>
+  </div>
+</div>

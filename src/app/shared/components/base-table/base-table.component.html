@@ -1,0 +1,30 @@
+<p-table
+  [value]="values()"
+  dataKey="id"
+  [selection]="selectedItem"
+  (selectionChange)="rowSelected($event)"
+>
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width: 1rem;"></th>
+      <ng-container *ngTemplateOutlet="columns()"></ng-container>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-product>
+    <tr>
+      <td>
+        <p-tableRadioButton [value]="product"></p-tableRadioButton>
+      </td>
+      <ng-container
+        *ngTemplateOutlet="rows(); context: { product: product }"
+      ></ng-container>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td colspan="8">
+        @if (isLoading()) { Cargando... } @else { No hay registros disponibles }
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

@@ -1,0 +1,25 @@
+<app-base-modal
+  [title]="title"
+  [show]="show"
+  [disableAccept]="form.invalid"
+  (onAccept)="save()"
+  (onCancel)="close()"
+  [size]="{ width: '35rem' }"
+>
+  <form [formGroup]="form">
+    <div class="grid horizontal-form">
+      <div class="col-3">
+        <label for="name">Nombre</label>
+      </div>
+      <div class="col-9">
+        <input id="name" type="text" pInputText formControlName="name" />
+      </div>
+      <div class="col-3">
+        <label for="description">Descripción</label>
+      </div>
+      <div class="col-9">
+        <textarea id="description" pInputTextarea formControlName="description"></textarea>
+      </div>
+    </div>
+  </form>
+</app-base-modal>

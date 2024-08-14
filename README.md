@@ -70,3 +70,17 @@ The project has the following projects:
 ### Libraries
 The project uses libraries to share code between projects. The following libraries are used:
 - Domain
+
+## Screenshots
+
+### Login
+![alt text](public/screenshots/image.png)
+
+## Products (same UI structure for the rest)
+![Home](public/screenshots/image2.png)
+
+![Add](public/screenshots/image2-1.png)
+
+![Actions](public/screenshots/image2-2.png)
+
+![Confirmation of Update/Delete](public/screenshots/image2-3.png)

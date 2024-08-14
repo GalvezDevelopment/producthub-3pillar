@@ -2,12 +2,11 @@ import { DeleteUserAction, GetUserAction } from './../store/actions/user.actions
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { UserStateModel } from '../core/interfaces/state/user-state.interface';
 import { SharedModule } from '../shared/shared.module';
 import { GetAllUsersAction } from '../store/actions/user.actions';
 import { UserState } from '../store/states/user.state';
 import { AddEditUserComponent } from './components/add-edit-user/add-edit-user.component';
-import { User } from '../core/interfaces/users/user.interface';
+import { User, UserStateModel } from '@producthub/domain';
 
 @Component({
   selector: 'app-users',
@@ -27,10 +26,6 @@ export class UsersComponent implements OnInit {
 
    ngOnInit(): void {
     this._store.dispatch(new GetAllUsersAction());
-   }
-
-   selectedUser(user: Event): void {
-    console.log(user);
    }
 
    update(): void {

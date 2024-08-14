@@ -1,5 +1,4 @@
-import { AddCategory } from "../../core/interfaces/categories/add-category.interface";
-import { UpdateCategory } from "../../core/interfaces/categories/update-category.interface";
+import { AddCategory, UpdateCategory } from "@producthub/domain";
 
 export class AddCategoryAction {
     static type = '[Category] Add';

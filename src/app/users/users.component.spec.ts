@@ -1,6 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { provideStore } from '@ngxs/store';
+import { SharedModule } from '../shared/shared.module';
+import { UserState } from '../store/states/user.state';
+import { AddEditUserComponent } from './components/add-edit-user/add-edit-user.component';
 import { UsersComponent } from './users.component';
+import { UsersMockService } from './users-mock.service';
 
 describe('UsersComponent', () => {
   let component: UsersComponent;
@@ -8,7 +13,11 @@ describe('UsersComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [UsersComponent]
+      imports: [UsersComponent, AddEditUserComponent, SharedModule],
+      providers: [
+        provideStore([UserState]),
+        UsersMockService
+      ]
     })
     .compileComponents();
 

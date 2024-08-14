@@ -1,4 +1,4 @@
-import { Category } from "../categories/category.interface";
+import { Category } from "../categories";
 
 export interface CategoryStateModel {
     categories: Category[];

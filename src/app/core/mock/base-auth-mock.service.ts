@@ -15,7 +15,7 @@ export class AuthMockService implements BaseAuth {
     if (email === 'cgalvezj@hotmail.com' && password === '123456') {
         return of(buildResponse(HttpStatusCode.Ok, mockedToken)).pipe(delay(2000));
     } else {
-        return of(buildResponse(HttpStatusCode.Unauthorized, null));
+        return of(buildResponse(HttpStatusCode.Unauthorized, null)).pipe(delay(2000));
     }
   }
   logout(): Observable<BaseResponse<null>> {

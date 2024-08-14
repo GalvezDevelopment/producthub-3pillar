@@ -1,8 +1,6 @@
-import { inject } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
-import { GetProduct } from '../../core/interfaces/products/get-product.interface';
-import { ProductStateModel } from '../../core/interfaces/state/product-state.interface';
-import { ProductsService } from '../../products/products.service';
+import { ProductsMockService } from '../../products/products-mock.service';
 import { SetLoadingAction } from '../actions/core.actions';
 import {
   AddProductAction,
@@ -11,6 +9,7 @@ import {
   GetProductAction,
   UpdateProductAction,
 } from '../actions/product.actions';
+import { GetProduct, ProductStateModel } from '@producthub/domain';
 
 @State<ProductStateModel>({
   name: 'product',
@@ -20,9 +19,10 @@ import {
     selectedProduct: null,
   },
 })
+@Injectable()
 export class ProductState {
   private _store = inject(Store);
-  private _productsService = inject(ProductsService);
+  private _productsService = inject(ProductsMockService);
 
   @Selector()
   static products(state: ProductStateModel) {
@@ -49,7 +49,7 @@ export class ProductState {
       ctx.patchState({ selectedProduct: null });
       return;
     }
-    this._store.dispatch(new SetLoadingAction(false));
+    this._store.dispatch(new SetLoadingAction(true));
     this._productsService.getById(action.productId).subscribe({
       next: (response) => ctx.patchState({ selectedProduct: response.data }),
       error: () => this._store.dispatch(new SetLoadingAction(false)),

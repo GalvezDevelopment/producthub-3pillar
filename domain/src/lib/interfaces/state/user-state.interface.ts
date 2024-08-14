@@ -1,4 +1,4 @@
-import { User } from "../users/user.interface";
+import { User } from "../users";
 
 export interface UserStateModel {
     users: User[];

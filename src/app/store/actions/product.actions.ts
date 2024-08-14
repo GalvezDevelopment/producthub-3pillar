@@ -1,5 +1,4 @@
-import { AddProduct } from "../../core/interfaces/products/add-product.interface";
-import { UpdateProduct } from "../../core/interfaces/products/update-product.interface";
+import { AddProduct, UpdateProduct } from "@producthub/domain";
 
 export class AddProductAction {
     static type = '[Product] Add';

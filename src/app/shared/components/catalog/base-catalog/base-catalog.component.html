@@ -12,7 +12,7 @@
     ></p-button>
     <p-button
       label="Borrar"
-      (onClick)="onDelete.emit()"
+      (onClick)="confirmDelete($event)"
       severity="danger"
       size="small"
     ></p-button>
@@ -29,3 +29,4 @@
     <ng-content></ng-content>
   </div>
 </div>
+<p-confirmDialog></p-confirmDialog>

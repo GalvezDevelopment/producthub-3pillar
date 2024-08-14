@@ -23,7 +23,7 @@ export class BaseModalComponent {
     this._confirmationService.confirm({
       target: event.target as EventTarget,
       message: '¿Estás seguro que deseas continuar?',
-      header: 'Confirmación',
+      header: 'Confirmar',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         this.onAccept.emit();

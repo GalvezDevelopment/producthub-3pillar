@@ -1,26 +1,58 @@
 <p-menubar styleClass="header">
   <ng-template pTemplate="start">
-    <span>ProductHUB</span>
+    <div class="flex">
+      <div class="flex logo align-content-center" routerLink="/">
+        <p-image src="logo/logo_producthub.svg" width="24" alt="logo" class="align-content-center"></p-image>
+        <h3 class="m-0 ml-1 align-content-center">ProductHUB</h3>
+      </div>
+      <div class="ml-3 hidden sm:block">
+        @for (item of items; track $index) {
+          @if (item['route']) {
+            <p-button
+            [routerLink]="item['route']"
+            [link]="true"
+            size="small"
+            [label]="item['label']"
+          ></p-button>
+          }
+        }
+      </div>
+    </div>
   </ng-template>
   <ng-template pTemplate="end">
     <p-button
-      routerLink="/"
-      [link]="true"
+      icon="pi pi-sign-out"
+      [rounded]="true"
       size="small"
-      label="Productos"
+      (onClick)="logout()"
+      severity="secondary"
+      [style]="{ height: '2rem', width: '2rem', padding: '0' }"
+      aria-label="Log out"
+      pTooltip="Log out"
+      showDelay="1000" 
+      class="hidden sm:inline-block"
     ></p-button>
+
+    <!-- MOBILE -->
     <p-button
-      routerLink="/categories"
-      [link]="true"
-      size="small"
-      label="Categorias"
-    ></p-button>
-    <p-button
-      routerLink="/users"
-      [link]="true"
-      size="small"
-      label="Usuarios"
-    ></p-button>
-    <p-button [link]="true" size="small" label="Salir" (onClick)="logout()"></p-button>
+    icon="pi pi-ellipsis-v"
+    [rounded]="true"
+    size="small"
+    (onClick)="menu.toggle($event)"
+    severity="secondary"
+    [style]="{ height: '2rem', width: '2rem', padding: '0' }"
+    aria-label="Log out"
+    class="inline-block sm:hidden"
+  ></p-button>
+    <p-menu #menu [model]="items" [popup]="true">
+      <ng-template pTemplate="item" let-item>
+        <p-button
+        [routerLink]="item['route']"
+        [link]="true"
+        size="small"
+        [label]="item['label']"
+      ></p-button>
+    </ng-template>
+    </p-menu>
   </ng-template>
 </p-menubar>

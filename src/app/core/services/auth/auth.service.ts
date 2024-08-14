@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Store } from '@ngxs/store';
-import { BaseAuth } from '../../interfaces/services/base-auth.interface';
 import { Observable } from 'rxjs';
 import { BaseResponse } from '../../interfaces/api/base.response';
+import { BaseAuth } from '../../interfaces/services/base-auth.interface';
 
 @Injectable()
 export class AuthService implements BaseAuth {

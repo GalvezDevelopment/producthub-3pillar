@@ -1,6 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CategoriesComponent } from './categories.component';
+import { AddEditCategoryComponent } from './components/add-edit-category/add-edit-category.component';
+import { SharedModule } from '../shared/shared.module';
+import { provideStore } from '@ngxs/store';
+import { CategoryState } from '../store/states/category.state';
+import { CategoriesMockService } from './categories-mock.service';
 
 describe('CategoriesComponent', () => {
   let component: CategoriesComponent;
@@ -8,7 +13,11 @@ describe('CategoriesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CategoriesComponent]
+      imports: [CategoriesComponent, AddEditCategoryComponent, SharedModule],
+      providers: [
+        provideStore([CategoryState]),
+        CategoriesMockService
+      ]
     })
     .compileComponents();
 

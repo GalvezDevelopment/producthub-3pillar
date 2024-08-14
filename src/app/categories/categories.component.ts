@@ -3,11 +3,9 @@ import { SharedModule } from '../shared/shared.module';
 import { AddEditCategoryComponent } from './components/add-edit-category/add-edit-category.component';
 import { Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { GetCategory } from '../core/interfaces/categories/get-category.interface';
 import { CategoryState } from '../store/states/category.state';
-import { CategoryStateModel } from '../core/interfaces/state/category-state.interface';
 import { DeleteCategoryAction, GetAllCategoriesAction, GetCategoryAction } from '../store/actions/category.actions';
-import { Category } from '../core/interfaces/categories/category.interface';
+import { Category, CategoryStateModel } from '@producthub/domain';
 
 @Component({
   selector: 'app-categories',

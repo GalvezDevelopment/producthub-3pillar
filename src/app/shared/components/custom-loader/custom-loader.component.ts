@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngxs/store';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { CoreState } from '../../../store/states/core.state';
 
 @Component({
@@ -10,7 +10,10 @@ import { CoreState } from '../../../store/states/core.state';
 })
 export class CustomLoaderComponent {
   isLoading$: Observable<boolean>;
+  isLoggedIn$: Observable<boolean>;
+
   constructor(private _store: Store) { 
     this.isLoading$ = this._store.select(CoreState.getIsLoading);
+    this.isLoggedIn$ = this._store.select(CoreState.getToken).pipe(map(token => !!token));
   }
 }

@@ -1,28 +1,15 @@
-/* :root {
-    --primary-color: #1F2D61; 
-    --primary-light-color: #6183C9; 
-    --primary-dark-color: #12193B;
+html, body, app-root {
+  height: 100%;
+}
 
-    --font-family: 'Poppins', sans-serif;
+input,
+textarea {
+  width: 100%;
+}
+
+.horizontal-form {
+  label {
+    display: block;
+    text-align: end;
   }
-
-  .p-button {
-    background: var(--primary-color);
-    border-color: var(--primary-dark-color);
-
-    &:not(:disabled):hover {
-        background-color: #2B3874;
-    }
-  } */
-
-  input, textarea {
-    width: 100%;
-  }
-
-  
-  .horizontal-form {
-    label {
-      display: block;
-      text-align: end;
-    }
-  }
+}

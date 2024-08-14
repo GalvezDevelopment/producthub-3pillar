@@ -1,4 +1,4 @@
-import { Category } from "../categories/category.interface";
+import { Category } from "../categories";
 import { Product } from "./product.interface";
 
 export interface UpdateProduct extends Omit<Product, 'category'> {

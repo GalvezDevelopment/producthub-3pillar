@@ -1,12 +1,11 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngxs/store';
-import { filter } from 'rxjs';
 import { AddEditModal } from '../../../core/interfaces/modals/add-edit-modal.abstract';
 import { SharedModule } from '../../../shared/shared.module';
 import {
-    AddUserAction,
-    GetUserAction,
+  AddUserAction,
+  GetUserAction,
 } from '../../../store/actions/user.actions';
 import { UserState } from '../../../store/states/user.state';
 import { UpdateUserAction } from './../../../store/actions/user.actions';

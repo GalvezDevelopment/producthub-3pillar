@@ -1,5 +1,6 @@
-import { AddUser } from "../../core/interfaces/users/add-user.interface";
-import { UpdateUser } from "../../core/interfaces/users/update-user.interface";
+import { AddUser, UpdateUser } from "@producthub/domain";
+
+
 
 export class AddUserAction {
     static type = '[User] Add';

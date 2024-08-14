@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BaseCatalogComponent } from './base-catalog.component';
+import { SharedModule } from '../../../shared.module';
+import { ConfirmationService } from 'primeng/api';
 
 describe('BaseCatalogComponent', () => {
   let component: BaseCatalogComponent;
@@ -8,7 +10,9 @@ describe('BaseCatalogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [BaseCatalogComponent]
+      declarations: [BaseCatalogComponent],
+      providers: [ConfirmationService],
+      imports: [SharedModule]
     })
     .compileComponents();
 

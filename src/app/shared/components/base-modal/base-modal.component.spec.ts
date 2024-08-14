@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BaseModalComponent } from './base-modal.component';
+import { ConfirmationService } from 'primeng/api';
+import { SharedModule } from '../../shared.module';
 
 describe('BaseModalComponent', () => {
   let component: BaseModalComponent;
@@ -8,7 +10,11 @@ describe('BaseModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [BaseModalComponent]
+      declarations: [BaseModalComponent],
+      imports: [SharedModule],
+      providers: [
+        ConfirmationService
+      ]
     })
     .compileComponents();
 

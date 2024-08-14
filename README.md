@@ -1,27 +1,72 @@
 # ProductStore
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.2.
+This app was developed for 3Pillar Global as an evaluation of Angular Framework and Nx workspaces.
 
-## Development server
+## Run
+`nx serve product-store`
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Credentials
+- Email: `cgalvezj@hotmail.com`
+- Password: `123456`
 
-## Code scaffolding
+## Frontend
+The frontend is built using Angular Framework and uses the following features:
+- Routing
+- Lazy loading
+- Environment files
+- Services
+- Components (mostly standalone ones)
+- Pipes
+- Control flow
+- Forms
+- Observables
+- RxJS
+- PrimeNg Components
+- PrimeFlex
+- NgXs
+- NgXs plugins
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Folder structure
+- `app` folder contains the main application components
+- `theme` folder contains global styles and may be used for PrimeNg theming.
+- `core` folder contains one-time-use components like header, singleton services, guards, among others.
+- `login`, `products`, `users`, and `categories` folders contains feature-specific components and services.
+- `shared` folder contains shared components and services.
+- `environments` folder contains environment files for different environments.
+- `store` folder contains the state management stuffs.
+- `utils` folder contains utility functions.
 
-## Build
+### Lazy loading
+The frontend uses lazy loading to load standalone components on demand. This is achieved by using the `loadComponent`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### NgXs
+The state management is provided by NgXs. The following states are used:
+- `CoreState`
+- `ProductState`
+- `CategoryState`
+- `UserState`
 
-## Running unit tests
+#### Plugins
+The following plugins are used:
+- `@ngxs/storage-plugin`
+- `@ngxs/devtools-plugin`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Frontend persistence
+All data in frontend is mocked. That means the app is using mocked services for simulating the calls to a server in development mode.
+The app is ready to use real data coming from a server.
 
-## Running end-to-end tests
+## Nx
+The project uses Nx workspace to manage the monorepo. The following features are used:
+- Workspace
+- Schematics
+- Projects
+- Libraries
+- Monorepo
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Projects
+The project has the following projects:
+- frontend (src/app)
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### Libraries
+The project uses libraries to share code between projects. The following libraries are used:
+- Domain

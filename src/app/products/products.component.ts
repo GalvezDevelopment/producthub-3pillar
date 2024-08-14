@@ -2,12 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { ProductStateModel } from '../core/interfaces/state/product-state.interface';
 import { SharedModule } from '../shared/shared.module';
 import { DeleteProductAction, GetAllProductsAction, GetProductAction } from '../store/actions/product.actions';
 import { ProductState } from '../store/states/product.state';
 import { AddEditProductComponent } from './components/add-edit-modal/add-edit-product.component';
-import { Product } from '../core/interfaces/products/product.interface';
+import { Product, ProductStateModel } from '@producthub/domain';
 
 @Component({
   selector: 'app-products',

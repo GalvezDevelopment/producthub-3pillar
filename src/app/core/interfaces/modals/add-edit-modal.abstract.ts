@@ -13,17 +13,14 @@ export abstract class AddEditModal {
     store
       .select(action)
       .pipe(
-        tap(console.log),
         takeUntil(this.destroySubscription),
         filter((item) => !!item)
       )
       .subscribe({
         next: (item: any) => {
-          console.log(item);
           this.title = 'Modificar';
           this.form.patchValue(item);
           this.show = !!item;
-          console.log(this.show);
         },
       });
   }

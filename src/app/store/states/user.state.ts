@@ -1,14 +1,14 @@
+import { inject, Injectable } from '@angular/core';
+import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
+import { UsersMockService } from '../../users/users-mock.service';
+import { SetLoadingAction } from '../actions/core.actions';
+import { AddUserAction, GetAllUsersAction } from '../actions/user.actions';
 import {
-  UpdateUserAction,
   DeleteUserAction,
   GetUserAction,
+  UpdateUserAction,
 } from './../actions/user.actions';
-import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
-import { UserStateModel } from '../../core/interfaces/state/user-state.interface';
-import { inject } from '@angular/core';
-import { UsersService } from '../../users/users.service';
-import { AddUserAction, GetAllUsersAction } from '../actions/user.actions';
-import { SetLoadingAction } from '../actions/core.actions';
+import { UserStateModel } from '@producthub/domain';
 
 @State<UserStateModel>({
   name: 'user',
@@ -18,9 +18,10 @@ import { SetLoadingAction } from '../actions/core.actions';
     userSelected: null,
   },
 })
+@Injectable()
 export class UserState {
   protected store = inject(Store);
-  protected usersService = inject(UsersService);
+  protected usersService = inject(UsersMockService);
 
   @Selector()
   static list(state: UserStateModel) {
@@ -85,7 +86,7 @@ export class UserState {
 
   @Action(DeleteUserAction)
   delete(ctx: StateContext<UserStateModel>, action: DeleteUserAction) {
-    ctx.patchState({ isLoading: true });
+    this.store.dispatch(new SetLoadingAction(true));
     this.usersService.delete(action.userId).subscribe({
       next: (response) => this.store.dispatch(GetAllUsersAction),
       error: () => this.store.dispatch(new SetLoadingAction(false)),

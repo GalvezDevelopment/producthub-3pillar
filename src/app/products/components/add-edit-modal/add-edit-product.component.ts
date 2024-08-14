@@ -10,8 +10,8 @@ import {
 } from '../../../store/actions/product.actions';
 import { ProductState } from '../../../store/states/product.state';
 import { map, Observable } from 'rxjs';
-import { Category } from '../../../core/interfaces/categories/category.interface';
 import { CategoryState } from '../../../store/states/category.state';
+import { Category } from '@producthub/domain';
 
 @Component({
   selector: 'app-add-edit-product',
